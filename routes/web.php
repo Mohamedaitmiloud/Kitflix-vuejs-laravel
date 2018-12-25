@@ -19,6 +19,11 @@ Route::get('/movies', function () {
     return view('movies');
 });
 
+Route::get('{path}', function () {
+    return view('movies');
+})->where( 'path', '([A-z\d-\/_.]+)?' );
+
+
 Auth::routes();
 
 

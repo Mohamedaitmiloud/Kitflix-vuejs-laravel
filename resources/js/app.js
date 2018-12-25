@@ -12,11 +12,15 @@ window.Vue = require('vue');
 // importing vueRouter 
 import VueRouter from 'vue-router'
 
+import {Stretch} from 'vue-loading-spinner'
+window.Stretch = Stretch;
+
 Vue.use(VueRouter)
 // defining routes
 let routes = [
     { path: '/movies', component: require('./components/Movies.vue').default },
-    { path: '/movie/:id', component: require('./components/Movie.vue').default }
+    { path: '/movie/:id', component: require('./components/Movie.vue').default },
+    { path: '/login', component: require('./components/Login.vue').default },
   ]
 //creating vue router instance and giving it the routs
 const router = new VueRouter({
