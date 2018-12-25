@@ -1887,356 +1887,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      movies: {}
+    };
+  },
+  methods: {
+    loadMovies: function loadMovies() {
+      var _this = this;
+
+      axios.get('/home').then(function (_ref) {
+        var data = _ref.data;
+        _this.movies = data.data.movies;
+      });
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  created: function created() {
+    this.loadMovies();
   }
 });
 
@@ -37183,843 +36854,120 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass:
+        "uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom"
+    },
+    [
+      _c("div", { staticClass: "uk-grid" }, [
+        _c(
+          "div",
+          {
+            staticClass: "uk-width-large-1-1 uk-width-medium-7-10",
+            attrs: {
+              id: "tm-right-section",
+              "data-uk-scrollspy": "{cls:'uk-animation-fade', target:'img'}"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "uk-grid-width-small-1-3 uk-grid-width-medium-1-4 uk-grid-width-large-1-6",
+                attrs: { "data-uk-grid": "{gutter: 20}" }
+              },
+              _vm._l(_vm.movies, function(movie) {
+                return _c("div", [
+                  _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
+                    _c("img", {
+                      attrs: { src: movie.medium_cover_image, alt: "Image" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", {
+                      staticClass:
+                        "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
+                    }),
+                    _vm._v(" "),
+                    _c("a", {
+                      staticClass: "uk-position-cover",
+                      attrs: { href: "#" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-panel" }, [
+                    _c("h5", { staticClass: "uk-panel-title" }, [
+                      _vm._v(_vm._s(movie.title))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "uk-float-right" }, [
+                        _vm._v(_vm._s(movie.year))
+                      ])
+                    ])
+                  ])
+                ])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom"
-      },
-      [
-        _c("div", { staticClass: "uk-grid" }, [
-          _c(
-            "div",
-            {
-              staticClass: "uk-width-large-1-1 uk-width-medium-7-10",
-              attrs: {
-                id: "tm-right-section",
-                "data-uk-scrollspy": "{cls:'uk-animation-fade', target:'img'}"
-              }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-grid-width-small-1-3 uk-grid-width-medium-1-4 uk-grid-width-large-1-6",
-                  attrs: { "data-uk-grid": "{gutter: 20}" }
-                },
-                [
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "#" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                      _c("img", {
-                        attrs: { src: "/img/placeholder.png", alt: "Image" }
-                      }),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-position-cover",
-                        attrs: { href: "media.html" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-panel" }, [
-                      _c("h5", { staticClass: "uk-panel-title" }, [
-                        _vm._v("Media title goes here")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _c("span", { staticClass: "rating" }, [
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" }),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "uk-icon-star" })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "uk-float-right" }, [
-                          _vm._v("2016")
-                        ])
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "uk-margin-large-top uk-margin-bottom" },
-                [
-                  _c("ul", { staticClass: "uk-pagination" }, [
-                    _c("li", { staticClass: "uk-disabled" }, [
-                      _c("span", [
-                        _c("i", { staticClass: "uk-icon-angle-double-left" })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("span", [_vm._v("1")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("2")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("3")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("4")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [_c("span", [_vm._v("...")])]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("20")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "uk-icon-angle-double-right" })
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ]
-          )
+    return _c("span", { staticClass: "rating" }, [
+      _c("i", { staticClass: "uk-icon-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "uk-icon-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "uk-icon-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "uk-icon-star" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "uk-icon-star" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin-large-top uk-margin-bottom" }, [
+      _c("ul", { staticClass: "uk-pagination" }, [
+        _c("li", { staticClass: "uk-disabled" }, [
+          _c("span", [_c("i", { staticClass: "uk-icon-angle-double-left" })])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "uk-active" }, [_c("span", [_vm._v("1")])]),
+        _vm._v(" "),
+        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("2")])]),
+        _vm._v(" "),
+        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("3")])]),
+        _vm._v(" "),
+        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("4")])]),
+        _vm._v(" "),
+        _c("li", [_c("span", [_vm._v("...")])]),
+        _vm._v(" "),
+        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("20")])]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "uk-icon-angle-double-right" })
+          ])
         ])
-      ]
-    )
+      ])
+    ])
   }
 ]
 render._withStripped = true
