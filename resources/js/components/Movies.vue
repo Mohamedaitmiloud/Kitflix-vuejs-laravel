@@ -10,11 +10,11 @@
                             
                             
                             
-                            <div v-for="movie in movies">
+                            <div v-for="movie in movies" :key="movie.id">
                                 <div class="uk-overlay uk-overlay-hover">
                                     <img :src="movie.medium_cover_image" alt="Image" >
                                     <div class="uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"></div>
-                                    <a class="uk-position-cover" href="#"></a>
+                                    <router-link class="uk-position-cover" :to="'/movie/'+movie.id"></router-link>
                                 </div>
                                 <div class="uk-panel" >
                                     
@@ -41,12 +41,10 @@
                         <div class="uk-margin-large-top uk-margin-bottom">
                             <ul class="uk-pagination">
                                 <li class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
-                                <li class="uk-active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><span>...</span></li>
-                                <li><a href="#">20</a></li>
+                                <!-- <li class="uk-active"><span>1</span></li> -->
+
+                                <li v-for="page in pages" :key="page.index"><a @click="louadByPage(page)">{{page}}</a></li>
+
                                 <li><a href="#"><i class="uk-icon-angle-double-right"></i></a></li>
                             </ul>
                         </div>
@@ -60,16 +58,31 @@
     export default {
         data(){
             return{
+                page:1,
+                pages:[],
                 movies:{},
+               
             }
         },
         methods:{
+            louadByPage(page=1){
+                this.page = page;
+                this.generatePages();
+                
+                this.loadMovies();
+            },
             loadMovies(){
-                axios.get('/home').then(({data})=>{this.movies=data.data.movies});
+                axios.get('/api/v1/movies/'+this.page).then(({data})=>{this.movies=data.data.movies});
+            },
+            generatePages(){
+                this.pages = [];                  
+                 for (let i = this.page; i <= (this.page+4); i++) {
+                     this.pages.push(i);
+                 }
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            this.generatePages();
         },
         created(){
             this.loadMovies();

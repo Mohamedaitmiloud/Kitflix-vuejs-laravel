@@ -1812,9 +1812,201 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      id: this.$route.params.id,
+      movie: {}
+    };
+  },
+  methods: {
+    loadMovie: function loadMovie() {
+      var _this = this;
+
+      axios.get('/api/v1/movie/' + this.id).then(function (_ref) {
+        var data = _ref.data;
+        _this.movie = data.data.movie;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log(this.id);
+  },
+  created: function created() {
+    this.loadMovie();
   }
 });
 
@@ -1885,26 +2077,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      page: 1,
+      pages: [],
       movies: {}
     };
   },
   methods: {
+    louadByPage: function louadByPage() {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.page = page;
+      this.generatePages();
+      this.loadMovies();
+    },
     loadMovies: function loadMovies() {
       var _this = this;
 
-      axios.get('/home').then(function (_ref) {
+      axios.get('/api/v1/movies/' + this.page).then(function (_ref) {
         var data = _ref.data;
         _this.movies = data.data.movies;
       });
+    },
+    generatePages: function generatePages() {
+      this.pages = [];
+
+      for (var i = this.page; i <= this.page + 4; i++) {
+        this.pages.push(i);
+      }
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.generatePages();
   },
   created: function created() {
     this.loadMovies();
@@ -36807,29 +37012,633 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "uk-block uk-block-small",
+      attrs: { id: "tm-media-section" }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "uk-container uk-container-center uk-width-8-10" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-grid" }, [
+            _c("div", { staticClass: "uk-width-medium-3-10" }, [
+              _c("div", { staticClass: "media-cover" }, [
+                _c("img", {
+                  staticClass: "uk-scrollspy-inview uk-animation-fade",
+                  attrs: { src: _vm.movie.large_cover_image, alt: "Image" }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-width-medium-7-10" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "ul",
+                { staticClass: "uk-switcher", attrs: { id: "media-tabs" } },
+                [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "uk-active",
+                      attrs: { "aria-hidden": "false" }
+                    },
+                    [
+                      _c(
+                        "h2",
+                        { staticClass: "uk-text-contrast uk-margin-large-top" },
+                        [_vm._v(_vm._s(_vm.movie.title) + " "), _vm._m(4)]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "uk-text-muted uk-h4" }, [
+                        _vm._v(
+                          "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies."
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(6)
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _vm._m(8)
+                ]
+              )
+            ])
+          ])
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
+    return _c("div", { staticClass: "media-container  uk-container-center" }, [
+      _c(
+        "a",
+        {
+          staticClass: "uk-button uk-button-large uk-button-link uk-text-muted",
+          attrs: { href: "index.html" }
+        },
+        [
+          _c("i", { staticClass: " uk-icon-arrow-left uk-margin-small-right" }),
+          _vm._v(" Back")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "uk-button uk-button-primary uk-button-large uk-width-1-1 uk-margin-top",
+        attrs: { href: "login.html" }
+      },
+      [
+        _c("i", { staticClass: "uk-icon-television uk-margin-small-right" }),
+        _vm._v(" Watch Now")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "uk-button uk-button-link uk-text-muted uk-button-large uk-width-1-1 uk-margin-top",
+        attrs: { href: "login.html" }
+      },
+      [
+        _c("i", { staticClass: "uk-icon-heart uk-margin-small-right" }),
+        _vm._v(" Add to Favourites")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c(
+        "ul",
+        {
+          staticClass: "uk-tab uk-tab-grid ",
+          attrs: { "data-uk-switcher": "{connect:'#media-tabs'}" }
+        },
+        [
+          _c(
+            "li",
+            {
+              staticClass: "uk-width-medium-1-3 uk-active",
+              attrs: { "aria-expanded": "true" }
+            },
+            [_c("a", { attrs: { href: "#" } }, [_vm._v("Description")])]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "uk-width-medium-1-3",
+              attrs: { "aria-expanded": "false" }
+            },
+            [_c("a", { attrs: { href: "#" } }, [_vm._v("Reviews")])]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "uk-width-medium-1-3",
+              attrs: { "aria-expanded": "false" }
+            },
+            [_c("a", { attrs: { href: "#" } }, [_vm._v("Trailer")])]
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            {
+              staticClass: "uk-tab-responsive uk-hidden uk-active",
+              attrs: { "aria-haspopup": "true", "aria-expanded": "true" }
+            },
+            [
+              _c("a", [_vm._v("Active")]),
+              _c(
+                "div",
+                { staticClass: "uk-dropdown uk-dropdown-small uk-dropdown-up" },
+                [_c("ul", { staticClass: "uk-nav uk-nav-dropdown" }), _c("div")]
               )
+            ]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      { staticClass: "rating uk-margin-small-left uk-h4 uk-text-warning" },
+      [
+        _c("i", { staticClass: "uk-icon-star " }),
+        _vm._v(" "),
+        _c("i", { staticClass: "uk-icon-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "uk-icon-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "uk-icon-star" }),
+        _vm._v(" "),
+        _c("i", { staticClass: "uk-icon-star" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "uk-subnav uk-subnav-line" }, [
+      _c("li", [
+        _c("i", { staticClass: "uk-icon-star uk-margin-small-right" }),
+        _vm._v(" 9.5")
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("i", { staticClass: "uk-icon-clock-o uk-margin-small-right" }),
+        _vm._v(" 108 Mins")
+      ]),
+      _vm._v(" "),
+      _c("li", [_vm._v("    March 04, 2016")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "dl",
+      { staticClass: "uk-description-list-horizontal uk-margin-top" },
+      [
+        _c("dt", [_vm._v("Starring")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c("ul", { staticClass: "uk-subnav " }, [
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Actor 1")])]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Actor 2")])]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Actor 3")])])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("dt", [_vm._v("Genres")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c("ul", { staticClass: "uk-subnav " }, [
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Comedy ")])]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Romance")])]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Crime")])])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("dt", [_vm._v("Countries")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c("ul", { staticClass: "uk-subnav " }, [
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Canada")])]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("USA")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("United Kingdom")])
             ])
           ])
         ])
-      ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { attrs: { "aria-hidden": "true" } }, [
+      _c("div", { staticClass: "uk-margin-small-top" }, [
+        _c("h3", { staticClass: "uk-text-contrast uk-margin-top" }, [
+          _vm._v("Post a Review")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "uk-alert uk-alert-warning",
+            attrs: { "data-uk-alert": "" }
+          },
+          [
+            _c("a", {
+              staticClass: "uk-alert-close uk-close",
+              attrs: { href: "" }
+            }),
+            _vm._v(" "),
+            _c("p", [
+              _c("i", {
+                staticClass:
+                  "uk-icon-exclamation-triangle uk-margin-small-right "
+              }),
+              _vm._v(" Please "),
+              _c(
+                "a",
+                {
+                  staticClass: "uk-text-contrast",
+                  attrs: { href: "login.html" }
+                },
+                [_vm._v(" Log in")]
+              ),
+              _vm._v(" or Sign up to post reviews quicker.")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("form", { staticClass: "uk-form uk-margin-bottom" }, [
+          _c("div", { staticClass: "uk-form-row" }, [
+            _c("textarea", {
+              staticClass: "uk-width-1-1",
+              attrs: {
+                cols: "30",
+                rows: "5",
+                placeholder: "Type your review here..."
+              }
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "uk-form-help-block" }, [
+              _vm._v("The "),
+              _c("code", [_vm._v(".uk-form-help-block")]),
+              _vm._v(" class creates an associated paragraph.")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-form-row" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "uk-button uk-button-large uk-button-success uk-float-right",
+                attrs: { href: "" }
+              },
+              [_vm._v("Post")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "uk-scrollable-box uk-responsive-width ",
+          attrs: { "data-simplebar-direction": "vertical" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "simplebar-track",
+              staticStyle: { display: "none" }
+            },
+            [_c("div", { staticClass: "simplebar-scrollbar" })]
+          ),
+          _c("div", { staticClass: "simplebar-scroll-content" }, [
+            _c("div", { staticClass: "simplebar-content" }, [
+              _c("ul", { staticClass: "uk-comment-list uk-margin-top" }, [
+                _c("li", [
+                  _c(
+                    "article",
+                    {
+                      staticClass:
+                        "uk-comment uk-panel uk-panel-space uk-panel-box-secondary"
+                    },
+                    [
+                      _c("header", { staticClass: "uk-comment-header" }, [
+                        _c("img", {
+                          staticClass: "uk-comment-avatar uk-border-circle",
+                          attrs: {
+                            src: "/img/avatar3.jpg",
+                            width: "50",
+                            height: "50",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "uk-comment-title" }, [
+                          _vm._v("@movielover")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-comment-meta" }, [
+                          _vm._v("2 days ago ")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-comment-body" }, [
+                        _c("p", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "article",
+                    {
+                      staticClass:
+                        "uk-comment uk-panel uk-panel-space uk-panel-box-secondary"
+                    },
+                    [
+                      _c("header", { staticClass: "uk-comment-header" }, [
+                        _c("img", {
+                          staticClass: "uk-comment-avatar uk-border-circle",
+                          attrs: {
+                            src: "/img/avatar1.jpg",
+                            width: "50",
+                            height: "50",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "uk-comment-title" }, [
+                          _vm._v("@movielover")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-comment-meta" }, [
+                          _vm._v("5 days ago ")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-comment-body" }, [
+                        _c("p", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "article",
+                    {
+                      staticClass:
+                        "uk-comment uk-panel uk-panel-space uk-panel-box-secondary"
+                    },
+                    [
+                      _c("header", { staticClass: "uk-comment-header" }, [
+                        _c("img", {
+                          staticClass: "uk-comment-avatar uk-border-circle",
+                          attrs: {
+                            src: "/img/avatar4.svg",
+                            width: "50",
+                            height: "50",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "uk-comment-title" }, [
+                          _vm._v("@movielover")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-comment-meta" }, [
+                          _vm._v("23 days ago ")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-comment-body" }, [
+                        _c("p", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "article",
+                    {
+                      staticClass:
+                        "uk-comment uk-panel uk-panel-space uk-panel-box-secondary"
+                    },
+                    [
+                      _c("header", { staticClass: "uk-comment-header" }, [
+                        _c("img", {
+                          staticClass: "uk-comment-avatar uk-border-circle",
+                          attrs: {
+                            src: "/img/avatar3.jpg",
+                            width: "50",
+                            height: "50",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "uk-comment-title" }, [
+                          _vm._v("@movielover")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-comment-meta" }, [
+                          _vm._v("7 days ago ")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-comment-body" }, [
+                        _c("p", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "article",
+                    {
+                      staticClass:
+                        "uk-comment uk-panel uk-panel-space uk-panel-box-secondary"
+                    },
+                    [
+                      _c("header", { staticClass: "uk-comment-header" }, [
+                        _c("img", {
+                          staticClass: "uk-comment-avatar uk-border-circle",
+                          attrs: {
+                            src: "/img/avatar2.jpg",
+                            width: "50",
+                            height: "50",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "uk-comment-title" }, [
+                          _vm._v("@movielover")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-comment-meta" }, [
+                          _vm._v("84 days ago ")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-comment-body" }, [
+                        _c("p", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "article",
+                    {
+                      staticClass:
+                        "uk-comment uk-panel uk-panel-space uk-panel-box-secondary"
+                    },
+                    [
+                      _c("header", { staticClass: "uk-comment-header" }, [
+                        _c("img", {
+                          staticClass: "uk-comment-avatar uk-border-circle",
+                          attrs: {
+                            src: "/img/avatar1.jpg",
+                            width: "50",
+                            height: "50",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "uk-comment-title" }, [
+                          _vm._v("@movielover")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-comment-meta" }, [
+                          _vm._v("3 days ago ")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-comment-body" }, [
+                        _c("p", [
+                          _vm._v(
+                            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { attrs: { "aria-hidden": "true" } }, [
+      _c(
+        "div",
+        {
+          staticClass: "uk-cover uk-margin-top",
+          staticStyle: { height: "400px" }
+        },
+        [
+          _c("iframe", {
+            staticStyle: { width: "712px", height: "400px" },
+            attrs: {
+              "data-uk-cover": "",
+              src:
+                "http://www.youtube.com/embed/YE7VzlLtp-4?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&modestbranding=1&wmode=transparent&enablejsapi=1&api=1",
+              width: "560",
+              height: "315",
+              frameborder: "0",
+              allowfullscreen: ""
+            }
+          })
+        ]
+      )
     ])
   }
 ]
@@ -36880,22 +37689,27 @@ var render = function() {
                 attrs: { "data-uk-grid": "{gutter: 20}" }
               },
               _vm._l(_vm.movies, function(movie) {
-                return _c("div", [
-                  _c("div", { staticClass: "uk-overlay uk-overlay-hover" }, [
-                    _c("img", {
-                      attrs: { src: movie.medium_cover_image, alt: "Image" }
-                    }),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticClass:
-                        "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
-                    }),
-                    _vm._v(" "),
-                    _c("a", {
-                      staticClass: "uk-position-cover",
-                      attrs: { href: "#" }
-                    })
-                  ]),
+                return _c("div", { key: movie.id }, [
+                  _c(
+                    "div",
+                    { staticClass: "uk-overlay uk-overlay-hover" },
+                    [
+                      _c("img", {
+                        attrs: { src: movie.medium_cover_image, alt: "Image" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass:
+                          "uk-overlay-panel uk-overlay-fade uk-overlay-background  uk-overlay-icon"
+                      }),
+                      _vm._v(" "),
+                      _c("router-link", {
+                        staticClass: "uk-position-cover",
+                        attrs: { to: "/movie/" + movie.id }
+                      })
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("div", { staticClass: "uk-panel" }, [
                     _c("h5", { staticClass: "uk-panel-title" }, [
@@ -36915,7 +37729,34 @@ var render = function() {
               0
             ),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "uk-margin-large-top uk-margin-bottom" }, [
+              _c(
+                "ul",
+                { staticClass: "uk-pagination" },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm._l(_vm.pages, function(page) {
+                    return _c("li", { key: page.index }, [
+                      _c(
+                        "a",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.louadByPage(page)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(page))]
+                      )
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ],
+                2
+              )
+            ])
           ]
         )
       ])
@@ -36943,29 +37784,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-margin-large-top uk-margin-bottom" }, [
-      _c("ul", { staticClass: "uk-pagination" }, [
-        _c("li", { staticClass: "uk-disabled" }, [
-          _c("span", [_c("i", { staticClass: "uk-icon-angle-double-left" })])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "uk-active" }, [_c("span", [_vm._v("1")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("2")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("3")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("4")])]),
-        _vm._v(" "),
-        _c("li", [_c("span", [_vm._v("...")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("20")])]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "uk-icon-angle-double-right" })
-          ])
-        ])
+    return _c("li", { staticClass: "uk-disabled" }, [
+      _c("span", [_c("i", { staticClass: "uk-icon-angle-double-left" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "uk-icon-angle-double-right" })
       ])
     ])
   }
@@ -50895,7 +51724,7 @@ var routes = [{
   path: '/movies',
   component: __webpack_require__(/*! ./components/Movies.vue */ "./resources/js/components/Movies.vue").default
 }, {
-  path: '/movie',
+  path: '/movie/:id',
   component: __webpack_require__(/*! ./components/Movie.vue */ "./resources/js/components/Movie.vue").default
 }]; //creating vue router instance and giving it the routs
 

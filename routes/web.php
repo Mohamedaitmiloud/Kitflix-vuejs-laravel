@@ -21,4 +21,4 @@ Route::get('/movies', function () {
 
 Auth::routes();
 
-Route::get('/home', 'API\MoviesController@getMovies');
+

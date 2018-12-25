@@ -16,7 +16,7 @@ Vue.use(VueRouter)
 // defining routes
 let routes = [
     { path: '/movies', component: require('./components/Movies.vue').default },
-    { path: '/movie', component: require('./components/Movie.vue').default }
+    { path: '/movie/:id', component: require('./components/Movie.vue').default }
   ]
 //creating vue router instance and giving it the routs
 const router = new VueRouter({

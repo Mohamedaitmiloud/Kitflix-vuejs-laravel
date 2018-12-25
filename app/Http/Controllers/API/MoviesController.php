@@ -11,13 +11,21 @@ class MoviesController extends Controller
 {
     const BASE_URL = 'https://yts.ag';
 
-    public function getMovies($quality='All',$limit=24,$query_term=0,$page=1,$minimum_rating=0,$genre='',$sort_by='year',$order_by='desc'){
+    public function listMovies($page){
 
         $baseUrl = self::BASE_URL.'/api/v2/list_movies.json';
-        $parameters = '?limit=' . $limit . '&page=' . $page . '&quality=' . $quality . '&minimum_rating=' . $minimum_rating . '&query_term=' . $query_term . '&genre=' . $genre . '&sort_by=' . $sort_by . '&order_by=' . $order_by;
+        $parameters = '?limit=' . $limit=24 . '&page=' . $page . '&quality=' . $quality='All' . '&minimum_rating=' .$minimum_rating=0 . '&genre=' . $genre='' . '&sort_by=' . $sort_by='year' . '&order_by=' . $order_by='desc';
        $data = $this->getFromApi($baseUrl.$parameters);
-      // $movies = json_decode($data);
        return  $data;
+
+    }
+
+
+    public function movieDetail($movie_id,$with_images = true, $with_cast = true){
+        $baseUrl = self::BASE_URL . '/api/v2/movie_details.json';
+        $parameters = '?movie_id=' . $movie_id . '&with_images' . $with_images . '&with_cast=' . $with_cast;
+        $data = $this->getFromApi($baseUrl.$parameters);
+        return  $data;
 
     }
 
