@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <Suggestions></Suggestions>
+                            <Suggestions :movie_id="id"></Suggestions>
                             </div>
                             
 </template>

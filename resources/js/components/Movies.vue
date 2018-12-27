@@ -78,7 +78,11 @@
             },
             loadMovies(){
                 this.loading=true;
-                axios.get('/api/v1/movies/'+this.page).then(({data})=>{this.movies=data.data.movies; this.loading=false});
+                axios.get('/api/v1/movies/'+this.page)
+                      .then(({data})=>{this.movies=data.data.movies; this.loading=false})
+                      .catch(error=>{
+                          console.log('Error',error);
+                      })
             },
             generatePages(){
                 this.pages = [];                  

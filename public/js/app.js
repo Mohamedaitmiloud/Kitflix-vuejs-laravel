@@ -1800,34 +1800,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -2064,6 +2036,8 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref.data;
         _this.movies = data.data.movies;
         _this.loading = false;
+      }).catch(function (error) {
+        console.log('Error', error);
       });
     },
     generatePages: function generatePages() {
@@ -2082,6 +2056,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.loadMovies();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Signup.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Signup.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
   }
 });
 
@@ -2114,20 +2113,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['movie_id'],
+  data: function data() {
+    return {
+      movies: {}
+    };
+  },
+  methods: {
+    loadSuggestions: function loadSuggestions() {
+      var _this = this;
+
+      axios.get('/api/v1/suggestions/' + this.movie_id).then(function (_ref) {
+        var data = _ref.data;
+        return _this.movies = data.data.movies;
+      }).catch(function (error) {
+        console.log('Error', error);
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.loadSuggestions();
   }
 });
 
@@ -43586,120 +43592,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [_vm._v("login")])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "uk-vertical-align  uk-overlay-panel uk-overlay-background"
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              " uk-vertical-align-middle uk-text-center  uk-width-medium-3-10 uk-width-large-2-10 uk-container-center"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-margin-large-bottom  uk-animation-reverse uk-animation-scale uk-animation-hover"
-              },
-              [
-                _c("img", {
-                  staticClass: "uk-margin uk-margin-remove",
-                  attrs: {
-                    width: "200",
-                    height: "40",
-                    alt: "logo",
-                    src: "assets/img/logo.svg"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("form", { staticClass: " uk-form" }, [
-              _c(
-                "h2",
-                { staticClass: "uk-margin-large-bottom uk-text-muted" },
-                [_vm._v("Log in")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-form-row" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "uk-form-icon uk-form-icon-flip uk-width-1-1"
-                  },
-                  [
-                    _c("input", {
-                      staticClass: "uk-width-1-1",
-                      attrs: { type: "text", placeholder: "Username" }
-                    }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "uk-icon-user" })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-form-row" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "uk-form-icon uk-form-icon-flip uk-width-1-1"
-                  },
-                  [
-                    _c("input", {
-                      staticClass: "uk-width-1-1",
-                      attrs: { type: "password", placeholder: "Password" }
-                    }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "uk-icon-lock " })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-form-row uk-text-small" }, [
-                _c("label", { staticClass: "uk-float-left" }, [
-                  _c("input", { attrs: { type: "checkbox" } }),
-                  _vm._v(" Remember Me")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "uk-float-right uk-link ",
-                    attrs: { href: "forgot-password.html" }
-                  },
-                  [_vm._v("Forgot Password?")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-form-row" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "uk-width-1-1 uk-button uk-button-success uk-button-large",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Log in")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43938,7 +43833,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("Suggestions")
+      _c("Suggestions", { attrs: { movie_id: _vm.id } })
     ],
     1
   )
@@ -44230,6 +44125,30 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Signup.vue?vue&type=template&id=5c0ed343&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Signup.vue?vue&type=template&id=5c0ed343& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("signup")])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Suggestions.vue?vue&type=template&id=ed553b58&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Suggestions.vue?vue&type=template&id=ed553b58& ***!
@@ -44245,247 +44164,97 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "uk-block " }, [
+    _c(
+      "div",
+      {
+        staticClass: "uk-container-center uk-container uk-margin-large-bottom"
+      },
+      [
+        _c("h3", { staticClass: "uk-margin-large-bottom uk-text-contrast" }, [
+          _vm._v("You might also like")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "uk-margin",
+            attrs: { "data-uk-slideset": "{small: 2, medium: 4, large: 6}" }
+          },
+          [
+            _c("div", { staticClass: "uk-slidenav-position uk-margin" }, [
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "uk-slideset uk-grid uk-flex-center uk-grid-width-1-1 uk-grid-width-large-1-6 uk-grid-width-medium-1-4 uk-grid-width-small-1-2"
+                },
+                _vm._l(_vm.movies, function(movie) {
+                  return _c(
+                    "li",
+                    { key: movie.id, staticClass: "uk-active" },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/movie/" + movie.id } },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: movie.medium_cover_image,
+                              width: "600",
+                              height: "400",
+                              alt: ""
+                            }
+                          })
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("a", {
+                staticClass:
+                  "uk-slidenav uk-slidenav-contrast uk-slidenav-previous",
+                attrs: { href: "#", "data-uk-slideset-item": "previous" }
+              }),
+              _vm._v(" "),
+              _c("a", {
+                staticClass:
+                  "uk-slidenav uk-slidenav-next uk-slidenav-contrast",
+                attrs: { href: "#", "data-uk-slideset-item": "next" }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-block " }, [
-      _c(
-        "div",
-        {
-          staticClass: "uk-container-center uk-container uk-margin-large-bottom"
-        },
-        [
-          _c("h3", { staticClass: "uk-margin-large-bottom uk-text-contrast" }, [
-            _vm._v("You might also like")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "uk-margin",
-              attrs: { "data-uk-slideset": "{small: 2, medium: 4, large: 6}" }
-            },
-            [
-              _c("div", { staticClass: "uk-slidenav-position uk-margin" }, [
-                _c(
-                  "ul",
-                  {
-                    staticClass:
-                      "uk-slideset uk-grid uk-flex-center uk-grid-width-1-1 uk-grid-width-large-1-6 uk-grid-width-medium-1-4 uk-grid-width-small-1-2"
-                  },
-                  [
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/d4KNaTrltq6bpkFS01pYtyXa09m.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/cGOPbv9wA5gEejkUN892JrveARt.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/1yeVJox3rjo2jBKrrihIMj7uoS9.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/811DjJTon9gD6hZ8nCjSitaIXFQ.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "uk-active" }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/fTplI1NCSuEDP4ITLcTps739fcC.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { display: "none" } }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/lUFK7ElGCk9kVEryDJHICeNdmd1.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { display: "none" } }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/qMJ7DSAQeTdBEs9tGFohWs2aB6n.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { display: "none" } }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/t2mZzQXjpQxmqtJOPpe8Dr2YpMl.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { display: "none" } }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/tpoVEYvm6qcXueZrQYJNRLXL88s.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { display: "none" } }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/uduCNFTuEcbvhvK8rrvNdf3ahzW.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticStyle: { display: "none" } }, [
-                      _c("a", { attrs: { href: "media.html" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://image.tmdb.org/t/p/w342/zSouWWrySXshPCT4t3UKCQGayyo.jpg",
-                            width: "600",
-                            height: "400",
-                            alt: ""
-                          }
-                        })
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("a", {
-                  staticClass:
-                    "uk-slidenav uk-slidenav-contrast uk-slidenav-previous",
-                  attrs: { href: "#", "data-uk-slideset-item": "previous" }
-                }),
-                _vm._v(" "),
-                _c("a", {
-                  staticClass:
-                    "uk-slidenav uk-slidenav-next uk-slidenav-contrast",
-                  attrs: { href: "#", "data-uk-slideset-item": "next" }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                {
-                  staticClass:
-                    "uk-slideset-nav uk-dotnav uk-dotnav-contrast uk-flex-center uk-margin-top"
-                },
-                [
-                  _c(
-                    "li",
-                    {
-                      staticClass: "uk-active",
-                      attrs: { "data-uk-slideset-item": "0" }
-                    },
-                    [_c("a")]
-                  ),
-                  _c("li", { attrs: { "data-uk-slideset-item": "1" } }, [
-                    _c("a")
-                  ])
-                ]
-              )
-            ]
-          )
-        ]
-      )
-    ])
+    return _c(
+      "ul",
+      {
+        staticClass:
+          "uk-slideset-nav uk-dotnav uk-dotnav-contrast uk-flex-center uk-margin-top"
+      },
+      [
+        _c(
+          "li",
+          { staticClass: "uk-active", attrs: { "data-uk-slideset-item": "0" } },
+          [_c("a")]
+        ),
+        _c("li", { attrs: { "data-uk-slideset-item": "1" } }, [_c("a")])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -62076,6 +61845,9 @@ var routes = [{
 }, {
   path: '/login',
   component: __webpack_require__(/*! ./components/Login.vue */ "./resources/js/components/Login.vue").default
+}, {
+  path: '/signup',
+  component: __webpack_require__(/*! ./components/Signup.vue */ "./resources/js/components/Signup.vue").default
 }]; //creating vue router instance and giving it the routs
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
@@ -62435,6 +62207,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Movies_vue_vue_type_template_id_0e7ffbee___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Movies_vue_vue_type_template_id_0e7ffbee___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Signup.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Signup.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Signup_vue_vue_type_template_id_5c0ed343___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Signup.vue?vue&type=template&id=5c0ed343& */ "./resources/js/components/Signup.vue?vue&type=template&id=5c0ed343&");
+/* harmony import */ var _Signup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Signup.vue?vue&type=script&lang=js& */ "./resources/js/components/Signup.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Signup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Signup_vue_vue_type_template_id_5c0ed343___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Signup_vue_vue_type_template_id_5c0ed343___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Signup.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Signup.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Signup.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Signup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Signup.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Signup.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Signup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Signup.vue?vue&type=template&id=5c0ed343&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Signup.vue?vue&type=template&id=5c0ed343& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signup_vue_vue_type_template_id_5c0ed343___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Signup.vue?vue&type=template&id=5c0ed343& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Signup.vue?vue&type=template&id=5c0ed343&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signup_vue_vue_type_template_id_5c0ed343___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signup_vue_vue_type_template_id_5c0ed343___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

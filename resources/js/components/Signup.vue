@@ -1,5 +1,9 @@
 <template>
-       <div>login</div>
+
+
+<div>signup</div>
+
+
 </template>
 
 <script>

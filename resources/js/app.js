@@ -21,6 +21,7 @@ let routes = [
     { path: '/movies', component: require('./components/Movies.vue').default },
     { path: '/movie/:id', component: require('./components/Movie.vue').default },
     { path: '/login', component: require('./components/Login.vue').default },
+    { path: '/signup', component: require('./components/Signup.vue').default },
   ]
 //creating vue router instance and giving it the routs
 const router = new VueRouter({
