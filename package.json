@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "vue-loading-spinner": "^1.0.11",
-        "vue-router": "^3.0.2"
+        "vue-router": "^3.0.2",
+        "vuex": "^3.0.1"
     }
 }

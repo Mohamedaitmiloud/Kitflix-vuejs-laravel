@@ -18,16 +18,18 @@ window.Stretch = Stretch;
 Vue.use(VueRouter)
 // defining routes
 let routes = [
-    { path: '/movies', component: require('./components/Movies.vue').default },
-    { path: '/movie/:id', component: require('./components/Movie.vue').default },
-    { path: '/login', component: require('./components/Login.vue').default },
-    { path: '/signup', component: require('./components/Signup.vue').default },
+    { path: '/movies', component: require('./components/movies/Movies.vue').default },
+    { path: '/movie/:id', component: require('./components/movies/Movie.vue').default },
+    { path: '/login', component: require('./components/auth/Login.vue').default },
+    { path: '/signup', component: require('./components/auth/Signup.vue').default },
   ]
 //creating vue router instance and giving it the routs
 const router = new VueRouter({
     mode:'history',
     routes
 })
+
+require('./imports/filters');
 
 /**
  * The following block of code may be used to automatically register your

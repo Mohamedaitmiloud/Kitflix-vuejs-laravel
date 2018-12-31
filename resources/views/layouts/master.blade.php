@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Webflix</title>
+    <title>KitFlix</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="/img/favicon.ico" type="/img/x-icon">
@@ -61,7 +61,7 @@
         <nav id="tm-header" class="uk-navbar ">
             <div class="uk-container uk-container-center ">
                 <a class="uk-navbar-brand uk-hidden-small" href="index.html"><i class="uk-icon-small uk-text-primary uk-margin-small-right uk-icon-play-circle"></i>
-                    WEBFLIX</a>
+                    KitFlix</a>
 
 
                 <div class="uk-navbar-flip uk-hidden-small">
@@ -77,16 +77,14 @@
                     <a href="#offcanvas" class="uk-navbar-toggle uk-navbar-toggle-alt uk-icon-medium" data-uk-offcanvas></a>
                 </div>
                 <div class="uk-navbar-brand uk-navbar-center uk-visible-small"><i class="uk-icon-small uk-text-primary uk-margin-small-right uk-icon-play-circle"></i>
-                    Webflix</div>
+                    KitFlix</div>
             </div>
         </nav>
         <nav class="uk-navbar uk-navbar-secondary  uk-hidden-small">
             <div class="uk-container-center uk-container">
                 <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="">Featured</a></li>
-                    <li><a href="">Movies</a></li>
-                    <li><a href="">TV Shows</a></li>
-                    <li><a href="">Music</a></li>
+                    <li class="uk-active"><a href="">Latest</a></li>
+                    <li><a href="">Popular</a></li>
                     <li class="uk-parent" data-uk-dropdown>
                         <a href="">Genre <i class="uk-icon-angle-down uk-margin-small-left"></i></a>
                         <div class="uk-dropdown uk-dropdown-navbar">
@@ -130,8 +128,7 @@
             <div class="uk-container-center uk-container">
                 <div class="uk-grid">
                     <div class="uk-width-medium-3-10">
-                        <div class="copyright-text">&copy; 2016 <span class="uk-text-bold">Webflix</span> - Streaming
-                            Media Theme</div>
+                        <div class="copyright-text">&copy; 2016 <span class="uk-text-bold">KitFlix</span> - All in one movies torrent</div>
                     </div>
                     <div class="uk-width-medium-5-10">
                         <ul class="uk-subnav ">

@@ -12,8 +12,12 @@
                                 <div class="media-cover">
                                     <img :src="movie.large_cover_image" alt="Image" class="uk-scrollspy-inview uk-animation-fade">
                                 </div>
-                                <a class="uk-button uk-button-primary uk-button-large uk-width-1-1 uk-margin-top" href="login.html"><i class="uk-icon-television uk-margin-small-right"></i> Watch Now</a>
-                                <a class="uk-button uk-button-link uk-text-muted uk-button-large uk-width-1-1 uk-margin-top" href="login.html"><i class="uk-icon-heart uk-margin-small-right"></i> Add to Favourites</a>
+                               
+                               
+                               
+                               <Favorite></Favorite>
+                    
+                                <a v-for="torrent in movie.torrents " :key="torrent.index" class="uk-button uk-button-primary uk-button-large uk-width-1-1 uk-margin-top" :href="torrent.url">{{torrent.type |capitalize }}{{"("+torrent.quality+")"+" "+torrent.size}}</a> 
                             </div>
                             <div class="uk-width-medium-7-10">
                                 <div class="">
@@ -29,14 +33,10 @@
 
                                         <li aria-hidden="false" class="uk-active">
                                             <h2 class="uk-text-contrast uk-margin-large-top">{{movie.title_long}} <span class="rating uk-margin-small-left uk-h4 uk-text-warning">
-                                                <i class="uk-icon-star "></i>
-                                                <i class="uk-icon-star"></i>
-                                                <i class="uk-icon-star"></i>
-                                                <i class="uk-icon-star"></i>
-                                                <i class="uk-icon-star"></i>
+                                                <i v-for="n in this.stars" :key="n.index"  class="uk-icon-star "></i>
                                             </span></h2>
                                             <ul class="uk-subnav uk-subnav-line">
-                                                <li><i class="uk-icon-star uk-margin-small-right"></i>{{movie.rating}}</li>
+                                                <li v-show="movie.rating!=0"><i class="uk-icon-star uk-margin-small-right"></i>{{movie.rating}}</li>
                                                 <li><i class="uk-icon-clock-o uk-margin-small-right"></i> {{movie.runtime}} Mins</li>
                                                 <li>{{movie.year}}</li>
                                             </ul>
@@ -91,24 +91,31 @@
 
 <script>
     import Suggestions from './Suggestions'
+    import Favorite from '../features/Favorite'
+
     export default {
         data(){
             return{
                 id:  this.$route.params.id,
-                movie:{}
+                movie:{},
+                stars: 0,
             }
         },
         methods:{
             loadMovie(){
                 axios.get('/api/v1/movie/'+this.id)
-                     .then(({data})=>{this.movie = data.data.movie})
+                     .then(({data})=>{
+                         this.movie = data.data.movie;
+                         this.stars=Math.round(this.movie.rating/2);
+                          })
                      .catch(error=>{
                          console.log(error);
                      })
-            }
+            },
         },
         components:{
-            Suggestions
+            Suggestions,
+            Favorite
         },
         mounted() {
             console.log(this.id)

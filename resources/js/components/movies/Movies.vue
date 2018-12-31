@@ -21,14 +21,11 @@
                                 </div>
                                 <div class="uk-panel" >
                                     
-                                    <h5 class="uk-panel-title">{{movie.title}}</h5>
+                                    <h5 class="uk-panel-title">{{movie.title | shortTitle}}</h5>
                                     <p>
                                         <span class="rating">
-                                            <i class="uk-icon-star"></i>
-                                            <i class="uk-icon-star"></i>
-                                            <i class="uk-icon-star"></i>
-                                            <i class="uk-icon-star"></i>
-                                            <i class="uk-icon-star"></i>
+                                            <i v-for="n in movie.rating" :key="n.index" class="uk-icon-star"></i>
+      
                                         </span>
                                         <span class="uk-float-right">{{movie.year}}</span>
                                     </p>
@@ -79,7 +76,11 @@
             loadMovies(){
                 this.loading=true;
                 axios.get('/api/v1/movies/'+this.page)
-                      .then(({data})=>{this.movies=data.data.movies; this.loading=false})
+                      .then(({data})=>{
+                          this.movies=data.data.movies;
+                          this.ratingStars(this.movies);
+                          this.loading=false;
+                           })
                       .catch(error=>{
                           console.log('Error',error);
                       })
@@ -89,6 +90,11 @@
                  for (let i = this.page; i <= (this.page+4); i++) {
                      this.pages.push(i);
                  }
+            },
+            ratingStars(movies){
+                movies.forEach(movie => {
+                    movie.rating = Math.round(movie.rating / 2);
+                });
             }
         },
         components: {

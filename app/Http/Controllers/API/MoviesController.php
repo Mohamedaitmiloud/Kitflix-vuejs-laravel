@@ -52,6 +52,23 @@ class MoviesController extends Controller
 
     }
 
+    public function listPopularMovies($page){
+        $baseUrl = self::BASE_URL.'/api/v2/list_movies.json';
+        $sort_by = 'download_count';
+        $parameters= '?limit=' . $limit=24 . '&page=' . $page . '&quality=' . $quality='All' . '&minimum_rating=' .$minimum_rating=0 . '&genre=' . $genre='' . '&sort_by=' . $sort_by . '&order_by=' . $order_by='desc';
+        $data = $this->getFromApi($baseUrl.$parameters);
+        return $data;
+
+    }
+
+
+    public function listMoviesByGenre($page,$genre){
+        $baseUrl = self::BASE_URL.'/api/v2/list_movies.json';
+        
+
+
+    }
+
 
     /**
      * 
