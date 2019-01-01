@@ -26,6 +26,19 @@ class MoviesController extends Controller
 
 
 
+    public function test(){
+        $page=1;
+        $baseUrl = self::BASE_URL.'/api/v2/list_movies.json';
+        $parameters = '?limit=' . $limit=24 . '&page=' . $page . '&quality=' . $quality='All' . '&minimum_rating=' .$minimum_rating=0 . '&genre=' . $genre='' . '&sort_by=' . $sort_by='year' . '&order_by=' . $order_by='desc';
+        $data = $this->getFromApi($baseUrl.$parameters);
+        $jsonData = json_decode($data,true);
+        $key = 'data';
+        return $jsonData[$key];
+    }
+
+
+    
+
     /**
      * index function to return the movies view
      */
@@ -62,12 +75,6 @@ class MoviesController extends Controller
     }
 
 
-    public function listMoviesByGenre($page,$genre){
-        $baseUrl = self::BASE_URL.'/api/v2/list_movies.json';
-        
-
-
-    }
 
 
     /**
@@ -113,7 +120,7 @@ class MoviesController extends Controller
         $client = new Client();
         $res = $client->get($url);
         if($res->getStatusCode()=='200'){
-            return $res->getBody();
+            return $res->getBody()->getContents();;
         }else{
             return [];
         }
